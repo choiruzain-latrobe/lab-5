@@ -1,17 +1,18 @@
-import List from './components/List';
-import './App.css';
+import React, { useState } from 'react';
+import List from './List';
 
 function App() {
-
-    const tasks = [
-        { description: 'Learn React', completed: true },
-        { description: 'Learn JSX', completed: false },
-        { description: 'Build a React App', completed: false }
-    ];
+    const [lists, setLists] = useState([
+        { id: 1, name: 'To Doe', tasks: [] },
+        { id: 2, name: 'In Progress', tasks: [] },
+        { id: 3, name: 'Done', tasks: [] }
+    ]);
 
     return (
-        <div className='page'>     
-            <List heading='My Tasks' tasks={tasks}/>
+        <div>
+            {lists.map((list) => (
+                <List key={list.id} list={list} />
+            ))}
         </div>
     );
 }
